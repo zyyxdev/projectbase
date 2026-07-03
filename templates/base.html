@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Base Projeto | {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head>
+<body>
+    <div id="particles-js" class="particles-overlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="logo"><i class="fas fa-bolt"></i> Base Projeto</div>
+        <nav>
+            <a href="{{ url_for('dashboard') }}" class="{% if request.endpoint == 'dashboard' %}active{% endif %}">
+                <i class="fas fa-th-large"></i> Dashboard
+            </a>
+            <a href="{{ url_for('usuarios') }}" class="{% if request.endpoint == 'usuarios' %}active{% endif %}">
+                <i class="fas fa-users"></i> Usuários
+            </a>
+            <a href="{{ url_for('logs') }}" class="{% if request.endpoint == 'logs' %}active{% endif %}">
+                <i class="fas fa-history"></i> Logs
+            </a>
+            <a href="{{ url_for('loja') }}" class="{% if request.endpoint == 'loja' %}active{% endif %}">
+                <i class="fas fa-store"></i> Loja
+            </a>
+            <a href="{{ url_for('noticias') }}" class="{% if request.endpoint == 'noticias' %}active{% endif %}">
+                <i class="fas fa-newspaper"></i> Notícias
+            </a>
+            <a href="{{ url_for('suporte') }}" class="{% if request.endpoint == 'suporte' %}active{% endif %}">
+                <i class="fas fa-headset"></i> Suporte
+            </a>
+            {% if session.nivel == 'admin' %}
+            <a href="{{ url_for('admin') }}" class="{% if request.endpoint == 'admin' %}active{% endif %}">
+                <i class="fas fa-shield-alt"></i> Admin
+            </a>
+            {% endif %}
+        </nav>
+        <div class="footer-side">v2.0</div>
+    </aside>
+
+    <main class="main" id="mainContent">
+        <div class="topbar">
+            <div class="left">
+                <button class="hamburger" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+                <h1>{% block page_title %}{% endblock %}</h1>
+            </div>
+            <div class="user" onclick="toggleUserMenu()">
+                <span>{{ session.get('nome', 'Usuário') }}</span>
+                <div class="avatar">{{ session.get('nome', 'U')[0].upper() }}</div>
+                <div class="user-menu" id="userMenu">
+                    <a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Sair</a>
+                </div>
+            </div>
+        </div>
+        {% block content %}{% endblock %}
+    </main>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

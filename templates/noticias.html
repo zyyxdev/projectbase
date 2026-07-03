@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Notícias{% endblock %}
+{% block page_title %}Notícias{% endblock %}
+{% block content %}
+<div class="noticias-grid">
+    {% for n in noticias %}
+    <div class="noticia-card">
+        <h4>{{ n.titulo }}</h4>
+        <small>{{ n.data }}</small>
+        <p>{{ n.texto }}</p>
+    </div>
+    {% endfor %}
+</div>
+<div style="margin-top:16px;">
+    <h4><i class="fas fa-ticket-alt"></i> Códigos promocionais</h4>
+    <div class="codigo-promo">BASE2026</div>
+    <div class="codigo-promo" style="margin-left:12px;">ZYXX10</div>
+</div>
+{% endblock %}

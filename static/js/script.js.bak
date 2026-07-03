@@ -1,0 +1,39 @@
+function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const canvas = document.getElementById('chart');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                datasets: [{
+                    label: 'Acessos',
+                    data: [45, 60, 75, 90, 85, 70, 50],
+                    borderColor: '#2d7aff',
+                    backgroundColor: 'rgba(45, 122, 255, 0.1)',
+                    tension: 0.3,
+                    fill: true,
+                    pointBackgroundColor: '#2d7aff',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: { color: '#8b9bb5', font: { size: 12 } }
+                    }
+                },
+                scales: {
+                    x: { ticks: { color: '#8b9bb5' }, grid: { color: '#1e252b' } },
+                    y: { ticks: { color: '#8b9bb5' }, grid: { color: '#1e252b' } }
+                }
+            }
+        });
+    }
+});

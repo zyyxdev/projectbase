@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Suporte{% endblock %}
+{% block page_title %}Suporte{% endblock %}
+{% block content %}
+<div class="topbar-actions">
+    <a href="{{ url_for('novo_ticket') }}" class="btn-primary"><i class="fas fa-plus"></i> Novo ticket</a>
+</div>
+<div class="table-wrap">
+    <h3><i class="fas fa-headset"></i> Meus tickets</h3>
+    {% if tickets %}
+    <table>
+        <thead><tr><th>ID</th><th>Assunto</th><th>Status</th><th>Ações</th></tr></thead>
+        <tbody>
+            {% for t in tickets %}
+            <tr>
+                <td>#{{ t.id }}</td>
+                <td>{{ t.assunto }}</td>
+                <td><span class="status {{ 'active' if t.status != 'Fechado' else 'inactive' }}">{{ t.status }}</span></td>
+                <td><a href="{{ url_for('suporte_detalhe', ticket_id=t.id) }}" class="btn-primary" style="padding:4px 12px;font-size:0.75rem;">Ver</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p style="color:#8b9bb5;">Nenhum ticket encontrado.</p>
+    {% endif %}
+</div>
+{% endblock %}

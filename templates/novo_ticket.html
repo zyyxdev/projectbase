@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Novo ticket{% endblock %}
+{% block page_title %}Abrir ticket{% endblock %}
+{% block content %}
+<div class="table-wrap">
+    <h3><i class="fas fa-pen"></i> Descreva seu problema</h3>
+    <form method="POST">
+        <div style="margin-bottom:12px;">
+            <label style="display:block;margin-bottom:4px;color:#8b9bb5;">Assunto</label>
+            <input type="text" name="assunto" required style="width:100%;padding:10px 14px;background:#0b0e11;border:1px solid #1e252b;border-radius:8px;color:#fff;">
+        </div>
+        <div style="margin-bottom:12px;">
+            <label style="display:block;margin-bottom:4px;color:#8b9bb5;">Mensagem</label>
+            <textarea name="mensagem" rows="4" required style="width:100%;padding:10px 14px;background:#0b0e11;border:1px solid #1e252b;border-radius:8px;color:#fff;resize:vertical;"></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Enviar ticket</button>
+        <a href="{{ url_for('suporte') }}" class="btn-secondary" style="margin-left:12px;padding:10px 20px;border:1px solid #1e252b;border-radius:8px;color:#8b9bb5;text-decoration:none;">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

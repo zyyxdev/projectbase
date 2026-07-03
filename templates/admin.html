@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Admin{% endblock %}
+{% block page_title %}Painel Admin{% endblock %}
+{% block content %}
+<div class="cards">
+    <div class="card"><div class="label">Total de usuários</div><div class="value">{{ usuarios|length }}</div></div>
+    <div class="card"><div class="label">Total de logs</div><div class="value">{{ logs|length }}</div></div>
+</div>
+<div class="table-wrap">
+    <h3>Usuários cadastrados</h3>
+    <table>
+        <thead><tr><th>Nome</th><th>Email</th><th>Status</th><th>Assinatura</th></tr></thead>
+        <tbody>
+            {% for u in usuarios %}
+            <tr><td>{{ u.nome }}</td><td>{{ u.email }}</td><td>{{ u.status }}</td><td>{{ u.assinatura }}</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Suporte{% endblock %}
+{% block page_title %}Suporte{% endblock %}
+{% block content %}
+<div class="table-wrap">
+    <h3><i class="fas fa-headset"></i> Tickets de suporte</h3>
+    <div class="ticket-list">
+        {% for ticket in tickets %}
+        <div class="ticket-item">
+            <span><i class="fas fa-user-circle"></i> {{ ticket.usuario }}</span>
+            <span><a href="{{ url_for('suporte_detalhe', ticket_id=loop.index0) }}">{{ ticket.assunto }}</a></span>
+            <span class="status {{ 'active' if ticket.status == 'Aberto' else 'inactive' }}">{{ ticket.status }}</span>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

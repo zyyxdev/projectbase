@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block page_title %}Dashboard{% endblock %}
+{% block content %}
+<div class="cards">
+    <div class="card">
+        <div class="label"><i class="fas fa-user"></i> Usuários ativos</div>
+        <div class="value">{{ dados.usuarios_ativos }}</div>
+        <div class="change">▲ +12%</div>
+    </div>
+    <div class="card">
+        <div class="label"><i class="fas fa-key"></i> Licenças ativas</div>
+        <div class="value">{{ dados.licencas_ativas }}</div>
+        <div class="change">▲ +8%</div>
+    </div>
+    <div class="card">
+        <div class="label"><i class="fas fa-dollar-sign"></i> Vendas (mês)</div>
+        <div class="value">{{ dados.vendas_mes }}</div>
+        <div class="change">▲ +23%</div>
+    </div>
+    <div class="card">
+        <div class="label"><i class="fas fa-clipboard-list"></i> Logs de hoje</div>
+        <div class="value">{{ dados.logs_hoje }}</div>
+        <div class="change">▼ -3%</div>
+    </div>
+</div>
+<div class="chart-container">
+    <h3><i class="fas fa-chart-line"></i> Atividade semanal</h3>
+    <canvas id="chart"></canvas>
+</div>
+{% endblock %}
